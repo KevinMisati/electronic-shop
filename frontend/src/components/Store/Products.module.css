@@ -1,0 +1,15 @@
+.products-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-color);
+    padding: 2rem 0;
+}
+.products{
+    max-width: 1144px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-between;
+    padding: 2rem 0;
+}

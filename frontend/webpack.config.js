@@ -1,5 +1,6 @@
 const path = require('path');
 
+
 module.exports = {
     mode: "development",
     entry: path.resolve(__dirname, 'src/index.js'),
@@ -26,7 +27,12 @@ module.exports = {
                     loader: "babel-loader",
                     options: {presets: ["@babel/env"]}
                 },
-            }
+            },
+            {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
         ],
+        
     },
 };

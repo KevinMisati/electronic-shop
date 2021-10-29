@@ -1,0 +1,18 @@
+:root{
+    --blue-color:#3C43A4;
+    --gray-color:#f3f3f3;
+    --red-color:#ff5063;
+    --transition:.5s all;
+    
+}
+
+.app{
+    /* display: flex;
+    align-items: center;
+    flex-direction: column; */
+}
+h1,
+h2,
+h3{
+    font-family: 'Glegoo', serif;
+}

@@ -8,10 +8,15 @@ import Account from "./Pages/Account"
 import Cart from "./Pages/Cart"
 import Store from "./Pages/Store"
 import ProductInfo from "./Pages/ProductInfo";
+import {CartProvider} from "./Context"
+import checkout from "./Pages/CheckOut"
+import CheckOut from "./Pages/CheckOut";
 
 const App = () => {
   const {path,url} = useRouteMatch()
+  
   return(
+    <CartProvider>
       <div className={classes.app}>
         <Navbar />
         <Switch>
@@ -19,34 +24,17 @@ const App = () => {
           <Route  path="/cart" component={Cart} />
           <Route exact path="/store" component={Store} />
           <Route exact path="/store/product/:id" component={ProductInfo} />
+          <Route path="/checkout" component={CheckOut} ></Route>
           <Route exact path="/" component={Home} />
         </Switch>
         
         <Footer />
       </div>
+    </CartProvider>
+      
+    
   )
 }
 
 export default App
 
-
-/* class App extends Component{
-  const [path] = useRouteMatch()
-  render(){
-    return(
-      <div className={classes.app}>
-        <Navbar />
-        <Switch>
-          <Route  path={`${path}/account`} component={Account} />
-          <Route  path="/cart" component={Cart} />
-          <Route  path="/store" component={Store} />
-          <Route exact path="/" component={Home} />
-        </Switch>
-        
-        <Footer />
-      </div>
-    );
-  }
-}
-
-export default App; */

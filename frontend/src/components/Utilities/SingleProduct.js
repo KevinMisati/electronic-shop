@@ -1,11 +1,21 @@
-import React from 'react'
+import React,{useContext,useEffect} from 'react'
 import classes from "./SingleProduct.module.css"
 import Button from './Button'
 import { Link,Switch,Route,useRouteMatch,useParams } from 'react-router-dom'
 import ProductInfo from '../../Pages/ProductInfo'
+import { CartContext } from "../../Context"
+
 
 const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
+
+    const {add_to_cart} = useContext(CartContext)
+    const handleItemIncrement = (id) => {
+        add_to_cart(id)
+    }
+    
+
     const {path} = useRouteMatch()
+
     const shorten_name = (name) => {
         const name_arr = name.split(" ")
         const short_name_arr = name_arr.splice(0,2)
@@ -21,7 +31,7 @@ const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
                 <div className={classes.product}>
 
                 <div className={classes["img-container_outer"]}>
-                    <div className={classes["eye-icon"]}>
+                    <div  className={classes["eye-icon"]}>
                         <Link to={"/store/product/" + id}>
                         <i className="fas fa-eye"></i>
                         </Link>
@@ -42,8 +52,8 @@ const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
                         <p className={classes["old-price"]}>{oldPrice}</p>
                         <p className={classes["new-price"]}>{newPrice}</p>
                     </div>
-                    <div className={classes["add-to-cart"]}>
-                        <Button text="add to cart" />
+                            <div onClick={() => handleItemIncrement(id)} className={classes["add-to-cart"]}>
+                                <Button  text="add to cart" />
                     </div>
                 </div>
                 </div>

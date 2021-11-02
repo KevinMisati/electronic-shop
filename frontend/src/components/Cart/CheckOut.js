@@ -1,13 +1,18 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import { Link } from 'react-router-dom'
+import { CartContext } from '../../Context'
 import classes from "./CheckOut.module.css"
 
-const CheckOut = () => {
+const CheckOutButton = () => {
+    let {sub_total} = useContext(CartContext)
+    sub_total = sub_total.toFixed(2)
+    console.log("checkout" ,sub_total)
     return (
         <div className={classes["checkout-container"]}>
             <div className={classes["checkout"]}>
                 <div className={classes.subtotal}>
                     <p>Subtotal:</p>
-                    <p>48</p>
+                    <p>{sub_total}</p>
                 </div>
                 <div className={classes.shipping}>
                     <p>Shipping:</p>
@@ -19,15 +24,15 @@ const CheckOut = () => {
                 </div>
                 <div className={classes["grand-total"]}>
                     <p>Grand Total:</p>
-                    <p>48</p>
+                <p>{sub_total}</p>
                 </div>
 
             </div>
             <div className={classes["checkout-btn"]}>
-                <button>checkout</button>
-                </div>
+                <Link to="/checkout">checkout</Link>
+            </div>
         </div>
     )
 }
 
-export default CheckOut
+export default CheckOutButton

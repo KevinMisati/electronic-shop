@@ -1,24 +1,40 @@
-import React from 'react'
+import React,{useState} from 'react'
 import classes from "./SingleProduct.module.css"
-const SingleProduct = () => {
+const SingleProduct = ({ id, img, title, price,info}) => {
+
+    const [quantityOfSpecificItem, setQuantityOfSpecificItem] = useState(1)
+    const [totalPriceOfSpecificItem, settotalPriceOfSpecificItem] = useState(price)
+
+    const handleItemIncrement = () => {
+        console.log("increment")
+        setQuantityOfSpecificItem(prev => prev + 1)
+        settotalPriceOfSpecificItem(prevPrice => prevPrice + price)
+    }
+    const handleItemdecrement = () => {
+        setQuantityOfSpecificItem(prev => prev - 1)
+    }
     return (
         <div className={classes["single-product-container"]}>
             <div className={classes["single-product"]}>
                 <div className={classes["img-container"]}>
-                    <img src='https://cdn11.bigcommerce.com/s-9p889rxpkb/images/stencil/80w/products/384/1211/BLISS_Bright_Idea_Vitamin_C_MOISTURIZER_50ml_JAR_FINALupdated__91912.1635283806.jpg?c=2'></img>
+                    <img src={img}></img>
                 </div>
                 <div className={classes["product-info-container"]}>
                 <div className={classes["product-info"]}>
-                    <h3>Bright Idea Moisturizer</h3>
-                    <p>Vitamin C + Tri-Peptide Collagen Protecting & Brightening Moisturizer</p>
+                    <h3>{title}</h3>
+                    <p>{info}</p>
                 </div>
                 <div className={classes["change-amount"]}>
-                    <button className={classes["remove-btn"]}>-</button>
-                    <span className={classes["quantity"]}>2</span>
-                    <button className={classes["add-btn"]}>+</button>
+
+                    <button onClick={handleItemdecrement} className={classes["remove-btn"]}>-</button>
+
+    <span className={classes["quantity"]}>{quantityOfSpecificItem}</span>
+
+                    <button onClick={handleItemIncrement} className={classes["add-btn"]}>+</button>
+
                 </div>
                 <div className={classes["price"]}>
-                    48
+                    {totalPriceOfSpecificItem}
                 </div>
                 <div className={classes["remove-product"]}>
                     <button>Remove</button>

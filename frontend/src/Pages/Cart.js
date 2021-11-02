@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import classes from "./Cart.module.css"
 import SingleProduct from '../components/Cart/SingleProduct'
-import CheckOut from '../components/Cart/CheckOut'
+import CheckOutButton from '../components/Cart/CheckOut'
+import { CartContext } from '../Context'
+
 const Cart = () => {
+    const { products_in_cart} = useContext(CartContext)
     return (
         <div className={classes["cart-container"]}>
             
@@ -10,9 +13,21 @@ const Cart = () => {
                 <h1>Shopping Cart</h1>
                 <div>
                 <div className={classes["products"]}>
-                    <SingleProduct />
+                  {
+                      products_in_cart.map (({id,img,title,price,info}) => {
+                          return (
+                              <SingleProduct
+                                    key={id}
+                                    img={img}
+                                    title={title}
+                                    price={price}
+                               />
+                          )
+                      })
+                  }  
+                    
                 </div>
-                <CheckOut />
+                <CheckOutButton />
             </div>
         </div>
     </div>

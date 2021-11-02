@@ -15,7 +15,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"accessories"
+    category:"accessories",
+    topSelling:false,
   },
   {
     id: 2,
@@ -30,7 +31,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"accessories"
+    category: "accessories",
+    topSelling: false,
   },
   {
     id: 3,
@@ -45,7 +47,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"phones"
+    category: "phones",
+    topSelling: true,
   },
   {
     id: 4,
@@ -58,7 +61,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"accessories"
+    category: "accessories",
+    topSelling: false,
   },
   {
     id: 5,
@@ -73,7 +77,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"laptops"
+    category: "laptops",
+    topSelling: true,
   },
   {
     id: 6,
@@ -88,7 +93,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"accessories"
+    category: "accessories",
+    topSelling: false,
   },
   {
     id: 7,
@@ -102,7 +108,8 @@ export const products = [
     inCart: false,
     count: 0,
     total:0,
-    category:"accessories"
+    category: "accessories",
+    topSelling: true,
   }, {
     id: 8,
     title: "Sumsung Galaxy Tab",
@@ -115,7 +122,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"phones"
+    category: "phones",
+    topSelling: true,
   }, {
     id: 9,
     title: "Virtual Acoustic Earbuds",
@@ -128,7 +136,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"accessories"
+    category: "accessories",
+    topSelling: false,
   }, {
     id: 10,
     title: "Bluetooth Speakers",
@@ -141,7 +150,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"accessories"
+    category: "accessories",
+    topSelling: false,
   },
   {
     id: 11,
@@ -156,7 +166,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"laptops"
+    category: "laptops",
+    topSelling: false,
   },
   {
     id: 12,
@@ -171,7 +182,8 @@ export const products = [
     inCart: false,
     count: 0,
     total: 0,
-    category:"laptops"
+    category: "laptops",
+    topSelling: false,
   }
 ];
 

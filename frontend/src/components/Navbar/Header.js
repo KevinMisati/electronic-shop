@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './Header.module.css'
+import CartLink from './CartLink'
 import { Link,
         useRouteMatch
     } 
@@ -30,7 +31,7 @@ const Header = () => {
 
             <div className={classes["account-and-cart"]}>
                 <div className={classes.cart}>
-                    <Link className={classes["nav-link"]} to="/cart">Cart</Link>
+                    <CartLink />
                 </div>
                 <div className={classes.account}>
                     <Link className={classes["nav-link"]} to={`/account/login`}>Login</Link>

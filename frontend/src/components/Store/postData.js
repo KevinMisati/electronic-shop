@@ -1,20 +1,13 @@
-
-
-export const products = [
-  {
-    id: 1,
-    title: "Portable Mobile Mouse",
-    img:
-      "https://images-na.ssl-images-amazon.com/images/G/01/amazonglobal/images/email/asins/DURM-244337D24F250BSI._V533746475_.jpg",
-    price: 9.99,
-    company: "VicTsing store",
-    address:
-      "https://www.amazon.com/VicTsing-Wireless-Portable-Receiver-Adjustable/dp/B013WC0P2A/ref=sr_1_18?dchild=1&fst=as%3Aoff&pf_rd_i=16225007011&pf_rd_m=ATVPDKIKX0DER&pf_rd_p=74069509-93ef-4a3c-8dca-a9e3fa773a64&pf_rd_r=ZPVVD78E8PAP38A4V4D6&pf_rd_s=merchandised-search-4&pf_rd_t=101&qid=1618801653&rnid=16225007011&s=computers-intl-ship&sr=1-18",
-    info:
-      "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
-    category:"accessories",
-    topSelling:false,
-  },
+data = [{
+    
+    "title": "Portable Mobile Mouse",
+    "new_price": 9.99,
+    "old_price": 12.99,
+    "company": "VicTsing store",
+    "info": "Lorem ipsum dolor amet offal butcher quinoa sustainable gastropub, echo park actually green juice sriracha paleo. Brooklyn sriracha semiotics, DIY coloring book mixtape craft beer sartorial hella blue bottle. Tote bag wolf authentic try-hard put a bird on it mumblecore. Unicorn lumbersexual master cleanse blog hella VHS, vaporware sartorial church-key cardigan single-origin coffee lo-fi organic asymmetrical. Taxidermy semiotics celiac stumptown scenester normcore, ethical helvetica photo booth gentrify.",
+    "category": "accessories",
+    "top_selling": false
+},
   {
     id: 2,
     title: "SanDisk 128GB Ultra",
@@ -149,5 +142,7 @@ export const products = [
     category: "laptops",
     topSelling: false,
   }
-];
 
+
+
+]

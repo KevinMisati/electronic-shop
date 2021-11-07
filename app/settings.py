@@ -176,3 +176,4 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 
 
 #django_heroku.settings(locals())
+ALLOWED_HOSTS = ["electron-shop.herokuapp.com", "http://127.0.0.1:8000/"]

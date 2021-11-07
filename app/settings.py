@@ -72,14 +72,16 @@ SIMPLE_JWT = {
 }
 
 MIDDLEWARE = [
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+    
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -160,7 +162,7 @@ STATIC_URL = '/static/'
     ] """
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
     
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
@@ -177,4 +179,4 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 
 
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())

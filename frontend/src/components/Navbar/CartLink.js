@@ -5,7 +5,7 @@ import {CartContext} from "../../Context"
 
 const CartLink = () => {
     const {number_of_items} = useContext(CartContext)
-    console.log(number_of_items)
+    
     return (
         <div className={classes["cart-container"]}>
             <div className={classes["cart"]}>

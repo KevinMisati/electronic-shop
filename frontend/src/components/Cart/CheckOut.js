@@ -6,7 +6,7 @@ import classes from "./CheckOut.module.css"
 const CheckOutButton = () => {
     let {sub_total} = useContext(CartContext)
     sub_total = sub_total.toFixed(2)
-    console.log("checkout" ,sub_total)
+    
     return (
         <div className={classes["checkout-container"]}>
             <div className={classes["checkout"]}>

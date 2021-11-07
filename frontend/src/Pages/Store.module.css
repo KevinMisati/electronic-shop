@@ -34,6 +34,7 @@
 .price-filter button:active,
 .price-filter button:visited,
 .price-filter button:focus
+
 {
     background-color: var(--blue-color);
     color: #fff;

@@ -1,12 +1,22 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import classes from "./TopSelling.module.css"
 import Title from '../Utilities/Title'
 import SingleProduct from '../Utilities/SingleProduct'
 import {products} from "../Store/data"
+import axiosInstance from '../../axiosApi'
 
 
 const TopSelling = () => {
-    const topSelling = products.filter(product => product.topSelling == true) 
+    const [topSelling,setTopSelling] = useState([])
+    useEffect(resp => {
+        axiosInstance.get('products/')
+        .then (resp => {
+            const topSelling = resp.data.filter(product => product.top_selling == true)
+            setTopSelling(topSelling)
+            console.log(resp.data)
+        })
+    },[])
+    //const topSelling = products.filter(product => product.topSelling == true) 
     return (
         <div className={classes["top-selling_container"]}>
         <div className={classes["top-selling"]}>

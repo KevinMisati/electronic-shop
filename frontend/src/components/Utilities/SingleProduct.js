@@ -18,7 +18,7 @@ const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
 
     const shorten_name = (name) => {
         const name_arr = name.split(" ")
-        const short_name_arr = name_arr.splice(0,2)
+        const short_name_arr = name_arr.splice(0,3)
         const short_name = short_name_arr.join(" ")
         return short_name
     }
@@ -44,8 +44,10 @@ const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
                 <div className={classes["product-info"]}>
                     <div className={classes["product-name"]}>
                         <h5>
+                            <Link to={"/store/product/" + id}>
+                                {short_name}
+                            </Link>
                             
-                            <a href='#'>{short_name}</a>
                         </h5>
                     </div>
                     <div className={classes["product-price"]}>

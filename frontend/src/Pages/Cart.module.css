@@ -5,6 +5,7 @@
     justify-content: center;
     padding-top: 1rem;
 }
+
 .cart{
     width: 100%;
     max-width: 1144px;
@@ -22,6 +23,11 @@
 }
 .products{
     flex: .73;
+}
+.empty-cart{
+    flex-direction: column;
+    align-items: center;
+    
 }
 @media screen and (max-width:700px){
     .cart>div{

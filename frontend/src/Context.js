@@ -1,5 +1,5 @@
 import React,{createContext,useState,useEffect} from 'react'
-import {products} from "./components/Store/data"
+import axiosInstance from './axiosApi'
 
 
 const CartContext = createContext()
@@ -10,23 +10,91 @@ const CartProvider = ({children}) => {
         number_of_items:0,
         products_in_cart:[],
         sub_total:0,
+        quantity_of_specific_product_in_cart:0,
     })
+
     const add_to_cart = (id) => {
-        console.log("add to cart",id)
-        const product = products.filter(product => product.id == id)
+
+        if (cartState.products_in_cart < 1 ) {
+            axiosInstance.get(`products/${id}`) 
         
-        setCartState({...cartState,
-            number_of_items:cartState.number_of_items + 1,
-            products_in_cart:[...product,...cartState.products_in_cart],
-            sub_total:cartState.sub_total + product[0].price
+                .then(resp => {
+                    setCartState({...cartState,
+                    number_of_items:cartState.number_of_items + 1,
+                    products_in_cart:[resp.data,...cartState.products_in_cart],
+                    sub_total:cartState.sub_total + Number(resp.data.new_price)
+                })
+                
+                }) 
+                .catch(error => {
+                    throw error
+                })
+        }
+        else  {
+            const is_product_in_cart = cartState.products_in_cart.filter(product => product.id == id)
+            if(is_product_in_cart.length > 0){
+                console.log("product is in cart already")
+            }
+            else{
+                console.log("product not in cart")
+                axiosInstance.get(`products/${id}`) 
+        
+                .then(resp => {
+                    setCartState({...cartState,
+                    number_of_items:cartState.number_of_items + 1,
+                    products_in_cart:[resp.data,...cartState.products_in_cart],
+                    sub_total:cartState.sub_total + Number(resp.data.new_price)
+                })
+                
+                }) 
+                .catch(error => {
+                    throw error
+                })
+            }
+
+        
+    
+                }
+            
+        
+        
+        
+        
+       
+
+    } 
+
+    const increase_sub_total = (price) => {
+        setCartState({
+            ...cartState,
+            sub_total:cartState.sub_total + Number(price)
         })
         
     }
-    useEffect(() => {
-        console.log(cartState.products_in_cart)
-        console.log(cartState.sub_total)
-    })
-   
+
+    const decrease_sub_total = (price) => {
+        setCartState({
+            ...cartState,
+            sub_total:cartState.sub_total - Number(price)
+        })
+        
+    }
+
+    const remove_product_from_cart = (id,price) => {
+        
+        setCartState({
+            ...cartState,
+            products_in_cart:cartState.products_in_cart.filter(product => product.id != id),
+            sub_total:cartState.sub_total - Number(price),
+            number_of_items:cartState.number_of_items - 1
+        })
+        
+    }
+    const quantity_of_specific_product_in_cart = (id) => {
+
+    }
+
+
 
     return (
         <CartContext.Provider value={
@@ -34,16 +102,16 @@ const CartProvider = ({children}) => {
                 number_of_items:cartState.number_of_items,
                 add_to_cart:add_to_cart,
                 products_in_cart : cartState.products_in_cart,
-                sub_total:cartState.sub_total
+                sub_total:cartState.sub_total,
+                increase_sub_total:increase_sub_total,
+                decrease_sub_total:decrease_sub_total,
+                remove_product_from_cart:remove_product_from_cart
             }
-          }
+        }
         >
             {children}
         </CartContext.Provider>
     )
 }
+
 export { CartContext, CartProvider}
-
-
-
-

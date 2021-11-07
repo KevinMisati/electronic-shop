@@ -48,11 +48,11 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),  #
+    ),  
 }
 
 SIMPLE_JWT = {
@@ -107,7 +107,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'electronic_shop', 
+        'NAME': 'electronics_shop', 
         'USER': 'postgres', 
         'PASSWORD': 'Kevin001',
         'HOST': '127.0.0.1', 

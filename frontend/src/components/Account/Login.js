@@ -1,12 +1,28 @@
 import React,{useState} from 'react'
 import classes from "./Login.module.css"
 import {Link} from "react-router-dom"
+import axiosInstance from '../../axiosApi'
 
 const Login = () => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axiosInstance.post('token/obtain/',{
+                email : email,
+                password : password
+            }
+        )
+        .then(response => {
+            axiosInstance.defaults.headers['Authorization'] = 'JWT ' + response.data.acess
+            localStorage.setItem('access_token',response.data.acess)
+            localStorage.setItem('refresh_token',response.data.refresh)
+            console.log(response.data)
+            return response.data
+        })
+        .catch (error => {
+            throw error
+        })
     }
     const handleEmailChange = (e) => {
         setEmail(e.target.value)

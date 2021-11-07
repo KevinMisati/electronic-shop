@@ -13,8 +13,8 @@ const Products = ({products}) => {
                         <SingleProduct
                             img={product.img}
                             name={product.title}
-                            newPrice={product.price}
-                            oldPrice={400}
+                            newPrice={product.new_price}
+                            oldPrice={product.old_price}
                             key={product.id}
                             id={product.id}
                         />

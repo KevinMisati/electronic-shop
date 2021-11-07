@@ -1,17 +1,26 @@
 import React,{useState,useEffect} from 'react'
 import classes from "./Store.module.css"
 import Products from '../components/Store/Products'
-import {products} from "../components/Store/data"
-import {Switch,Route} from "react-router-dom"
+import axiosInstance from '../axiosApi'
 
 
 const Store = () => {
+    const [products,setProducts] = useState([])
     const [filteredProducts,setFilteredProducts] = useState([])
+
     useEffect(() => {
-        let filtered = products.filter(product => product.category == "laptops")
-        setFilteredProducts(filtered)
+        axiosInstance.get("products/")
+        .then(response => {
+            setProducts(response.data)
+            setFilteredProducts(response.data.filter(product => product.category == "laptops"))
+            console.log(response.data)
+        })
         
-    }, [])
+        .catch(error => {
+            throw error
+        })
+    },[])
+
     const handleLaptopFiltration = () => {
         let filtered = products.filter(product => product.category == "laptops")
         setFilteredProducts(filtered)

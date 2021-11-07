@@ -7,15 +7,9 @@ from rest_framework.response import Response
 
 from .serializers import CustomUserSerializer
 
-
-class HelloWorldView(APIView):
-    permission_classes = [permissions.AllowAny]
-
-    def get(self, request):
-        return Response(data={"hello": "world"}, status=status.HTTP_200_OK)
-
 class CustomUserCreate(APIView):
     permission_classes = [permissions.AllowAny]
+    authentication_classes = []
 
     def post(self,request,format='json'):
         serializer = CustomUserSerializer(data=request.data)

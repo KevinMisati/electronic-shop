@@ -1,1 +1,1 @@
-web: gunicorn ecom.wsgi:application --log-file - --log-level debug
+waitress-serve --listen=*:8000 myapp.wsgi:application

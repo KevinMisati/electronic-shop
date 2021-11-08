@@ -14,6 +14,7 @@ const TopSelling = () => {
             const topSelling = resp.data.filter(product => product.top_selling == true)
             setTopSelling(topSelling)
             console.log(resp.data)
+            alert(resp.data)
         })
     },[])
     //const topSelling = products.filter(product => product.topSelling == true) 

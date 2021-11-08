@@ -9,6 +9,8 @@ const Home = () => {
   const [filteredProducts,setFilteredProducts] = useState([])
 alert("hello")
   useEffect(() => {
+    alert("hello")
+    alert("hello")
         fetch("https://electron-shop.herokuapp.com/api/products")
         .then(response => response.json())
         .then(response => {

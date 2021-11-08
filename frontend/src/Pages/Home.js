@@ -9,7 +9,7 @@ const Home = () => {
   const [filteredProducts,setFilteredProducts] = useState([])
 alert("hello")
   useEffect(() => {
-        axiosInstance.get("products/")
+        axiosInstance.get("products")
         .then(response => {
           alert("jnjk x djjfjf ejjj dkdkkd dkdkkdkdkdkdk")
             setProducts(response.data)

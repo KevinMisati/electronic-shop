@@ -15,11 +15,11 @@ alert("hello")
         .then(response => response.json())
         .then(response => {
           alert("jnjk x djjfjf ejjj dkdkkd dkdkkdkdkdkdk")
-            setProducts(response.data)
-            setFilteredProducts(response.data.filter(product => product.category == "laptops"))
-            console.log(response.data)
+            setProducts(response)
+            setFilteredProducts(response.filter(product => product.category == "laptops"))
+            
             alert("hello")
-            alert(response.data)
+            alert(response)
         })
         
         .catch(error => {

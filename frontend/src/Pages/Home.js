@@ -9,7 +9,8 @@ const Home = () => {
   const [filteredProducts,setFilteredProducts] = useState([])
 alert("hello")
   useEffect(() => {
-        axiosInstance.get("products")
+        fetch("https://electron-shop.herokuapp.com/api/products")
+        .then(response => response.json())
         .then(response => {
           alert("jnjk x djjfjf ejjj dkdkkd dkdkkdkdkdkdk")
             setProducts(response.data)

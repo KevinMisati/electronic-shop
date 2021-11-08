@@ -176,7 +176,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = "authentication.CustomUser"
 
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
                 "127.0.0.1", '0.0.0.0', 'localhost', ]
 

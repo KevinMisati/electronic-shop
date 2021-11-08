@@ -12,28 +12,31 @@ const axiosInstance = axios.create({
     }
 })
 
-axiosInstance.interceptors.response.use(
+/* axiosInstance.interceptors.response.use(
     response => response,
-    async error => {
+    error => {
 const originalRequest = error.config;
 
 if (error.response.status === 401 && error.response.statusText === "Unauthorized") {
     const refresh_token = localStorage.getItem('refresh_token');
 
-    try {
-        const response = await axiosInstance
-            .post('token/refresh/', { refresh: refresh_token });
-        localStorage.setItem('access_token', response.data.access);
-        localStorage.setItem('refresh_token', response.data.refresh);
+    return axiosInstance
+        .post('token/refresh/', {refresh: refresh_token})
+        .then((response) => {
 
-        axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
-        originalRequest.headers['Authorization'] = "JWT " + response.data.access;
-        return await axiosInstance(originalRequest);
-    } catch (err) {
-        console.log(err);
-    }
+            localStorage.setItem('access_token', response.data.access);
+            localStorage.setItem('refresh_token', response.data.refresh);
+
+            axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
+            originalRequest.headers['Authorization'] = "JWT " + response.data.access;
+
+            return axiosInstance(originalRequest);
+        })
+        .catch(err => {
+            console.log(err)
+        });
 }
 return Promise.reject(error);
 }
-);
+); */
 export default axiosInstance

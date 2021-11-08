@@ -181,4 +181,4 @@ ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
                 "127.0.0.1", '0.0.0.0', 'localhost', ]
 
 DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True)
+    conn_max_age=600, ssl_require=False)

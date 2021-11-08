@@ -11,6 +11,7 @@ alert("hello")
   useEffect(() => {
         axiosInstance.get("products/")
         .then(response => {
+          alert("jnjk x djjfjf ejjj dkdkkd dkdkkdkdkdkdk")
             setProducts(response.data)
             setFilteredProducts(response.data.filter(product => product.category == "laptops"))
             console.log(response.data)

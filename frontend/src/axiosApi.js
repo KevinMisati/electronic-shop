@@ -1,4 +1,4 @@
-/* import axios from 'axios'
+import axios from 'axios'
 
 const baseUrl ="https://electron-shop.herokuapp.com/api/"
 const axiosInstance = axios.create({
@@ -38,4 +38,4 @@ if (error.response.status === 401 && error.response.statusText === "Unauthorized
 return Promise.reject(error);
 }
 );
-export default axiosInstance */
+export default axiosInstance

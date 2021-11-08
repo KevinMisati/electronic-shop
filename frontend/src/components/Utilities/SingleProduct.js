@@ -30,7 +30,7 @@ const SingleProduct = ({id,name,img,newPrice,oldPrice}) => {
             <div className={classes["single-product"]}>
                 <div className={classes.product}>
 
-                <div className={classes["img-container_outer"]}>
+                <div id="jd" className={classes["img-container_outer"]}>
                     <div  className={classes["eye-icon"]}>
                         <Link to={"/store/product/" + id}>
                         <i className="fas fa-eye"></i>

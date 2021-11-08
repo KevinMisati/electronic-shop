@@ -107,6 +107,12 @@ transition: .5s all;
 
 
 @media screen and (max-width:600px){
+    .single-product-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .img-container_outer{
     width:225px !important;
     height: 310px !important;
@@ -121,5 +127,6 @@ transition: .5s all;
 .img-container_inner{
     width:195px !important;
     height: 270px !important;
+    text-align: center;
 }
 }

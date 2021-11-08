@@ -29,9 +29,30 @@ module.exports = {
                 },
             },
             {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                        sourceMap: true,
+                        importLoaders: 1,
+                        modules: {
+                            localIdentName: '[local]___[hash:base64:5]'
+                        }
+                        }
+                    }
+                ],
+                include: /\.module\.css$/,
+            },
+            
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+                exclude: /\.module\.css$/,
+            }, 
         ],
         
     },

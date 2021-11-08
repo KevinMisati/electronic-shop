@@ -9,17 +9,14 @@ const Home = () => {
   const [filteredProducts,setFilteredProducts] = useState([])
 alert("hello")
   useEffect(() => {
-    alert("hello")
-    alert("hello")
-        fetch("http://electron-shop.herokuapp.com/api/products")
-        .then(response => response.json())
+        axiosInstance.get("products/")
         .then(response => {
           alert("jnjk x djjfjf ejjj dkdkkd dkdkkdkdkdkdk")
-            setProducts(response)
-            setFilteredProducts(response.filter(product => product.category == "laptops"))
-            
+            setProducts(response.data)
+            setFilteredProducts(response.data.filter(product => product.category == "laptops"))
+            console.log(response.data)
             alert("hello")
-            alert(response)
+            alert(response.data)
         })
         
         .catch(error => {

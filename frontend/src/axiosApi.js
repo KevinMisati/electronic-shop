@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-//const baseUrl ="https://electron-shop.herokuapp.com/api/"
-const baseUrl = "http://127.0.0.1:8000/api/"
+const baseUrl ="https://electron-shop.herokuapp.com/api/"
+//const baseUrl = "http://127.0.0.1:8000/api/"
 const axiosInstance = axios.create({
     baseURL:baseUrl,
     timeout:50000,
@@ -12,7 +12,7 @@ const axiosInstance = axios.create({
     }
 })
 
-/* axiosInstance.interceptors.response.use(
+axiosInstance.interceptors.response.use(
     response => response,
     error => {
 const originalRequest = error.config;
@@ -38,5 +38,5 @@ if (error.response.status === 401 && error.response.statusText === "Unauthorized
 }
 return Promise.reject(error);
 }
-); */
+); 
 export default axiosInstance

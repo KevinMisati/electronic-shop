@@ -13,7 +13,7 @@ const TopSelling = () => {
         .then (resp => {
             const topSelling = resp.data.filter(product => product.top_selling == true)
             setTopSelling(topSelling)
-            console.log(resp.data)
+            console.log("resp.data",resp.data)
             alert(resp.data)
         })
     },[])

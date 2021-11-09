@@ -176,18 +176,18 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 #django_heroku.settings(locals())
 
 
-#DEBUG = True
-DEBUG = False
+DEBUG = True
+#DEBUG = False
 
-if DEBUG == False:
-    BASE_URL = "https://electron-shop.herokuapp.com"
-    ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
-                "127.0.0.1", '0.0.0.0', 'localhost', ]
+#if DEBUG == False:
+BASE_URL = "https://electron-shop.herokuapp.com"
+ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
+            "127.0.0.1", '0.0.0.0', 'localhost', ]
 
-    DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True) 
+DATABASES['default'] = dj_database_url.config(
+conn_max_age=600, ssl_require=True) 
 
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True 
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'

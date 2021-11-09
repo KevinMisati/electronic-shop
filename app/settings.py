@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-(w=_(a5zi331vxzh6)y6&e3^xyem=!3za-sq@_-28+pq#zha#b
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+
 ALLOWED_HOSTS = []
 
 
@@ -74,7 +74,7 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -177,17 +177,18 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 
 
 
-#DEBUG = False
 
-#if DEBUG == False:
-BASE_URL = "https://electron-shop.herokuapp.com"
-ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
-            "127.0.0.1", '0.0.0.0', 'localhost', ]
+DEBUG = False
 
-DATABASES['default'] = dj_database_url.config(
-conn_max_age=600, ssl_require=True) 
+if DEBUG == False:
+    BASE_URL = "https://electron-shop.herokuapp.com"
+    ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
+                "127.0.0.1", '0.0.0.0', 'localhost', ]
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True 
+    DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True) 
+
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True 
 
 

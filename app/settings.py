@@ -175,8 +175,8 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 #django_heroku.settings(locals())
 
 
-#DEBUG = False
-DEBUG = True
+DEBUG = False
+#DEBUG = True
 
 #if DEBUG == False:
 BASE_URL = "https://electron-shop.herokuapp.com"

@@ -178,19 +178,17 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 
 
 
-DEBUG = False
-
-if DEBUG == False:
-    BASE_URL = "https://electron-shop.herokuapp.com"
-    ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
-                "127.0.0.1", '0.0.0.0', 'localhost', ]
-
-    DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True) 
-
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True 
-
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+DEBUG = True
 
 
+BASE_URL = "https://electron-shop.herokuapp.com"
+ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
+            "127.0.0.1", '0.0.0.0', 'localhost', ]
+
+DATABASES['default'] = dj_database_url.config(
+conn_max_age=600, ssl_require=True) 
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'

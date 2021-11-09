@@ -130,3 +130,14 @@ transition: .5s all;
     text-align: center;
 }
 }
+@media screen and (max-width:500px){
+    .img-container_outer{
+        width:225px !important;
+        height: 270px !important;
+    }
+    .img-container_inner{
+        width:195px !important;
+        height: 240px !important;
+        text-align: center;
+}
+}

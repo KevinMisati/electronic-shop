@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-(w=_(a5zi331vxzh6)y6&e3^xyem=!3za-sq@_-28+pq#zha#b
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-
+DEBUG = True
 ALLOWED_HOSTS = []
 
 
@@ -176,7 +176,7 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 #django_heroku.settings(locals())
 
 
-DEBUG = True
+
 #DEBUG = False
 
 #if DEBUG == False:
@@ -190,4 +190,4 @@ conn_max_age=600, ssl_require=True)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True 
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+

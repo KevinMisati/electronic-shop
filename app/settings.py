@@ -75,7 +75,6 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -84,6 +83,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
 ]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
 
 ROOT_URLCONF = 'app.urls'
 
@@ -177,8 +179,10 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 
 
 #django_heroku.settings(locals())
-ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
+PREPEND_WWW = True
+BASE_URL = "https://www.electron-shop.herokuapp.com"
+ALLOWED_HOSTS = ["electron-shop.herokuapp.com","www.electron-shop.herokuapp.com",
                 "127.0.0.1", '0.0.0.0', 'localhost', ]
 
 DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=False)
+    conn_max_age=600, ssl_require=True) 

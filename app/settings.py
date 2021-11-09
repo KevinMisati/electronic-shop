@@ -104,7 +104,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app.wsgi.application'
+#WSGI_APPLICATION = 'app.wsgi.application'
 
 
 # Database
@@ -176,8 +176,8 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 #django_heroku.settings(locals())
 
 
-DEBUG = True
 #DEBUG = True
+DEBUG = True
 
 #if DEBUG == False:
 BASE_URL = "https://electron-shop.herokuapp.com"

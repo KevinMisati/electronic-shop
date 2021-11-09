@@ -33,10 +33,10 @@ const CartProvider = ({children}) => {
         else  {
             const is_product_in_cart = cartState.products_in_cart.filter(product => product.id == id)
             if(is_product_in_cart.length > 0){
-                console.log("product is in cart already")
+                
             }
             else{
-                console.log("product not in cart")
+                
                 axiosInstance.get(`products/${id}`) 
         
                 .then(resp => {

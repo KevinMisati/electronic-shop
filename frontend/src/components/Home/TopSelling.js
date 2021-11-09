@@ -13,11 +13,9 @@ const TopSelling = () => {
         .then (resp => {
             const topSelling = resp.data.filter(product => product.top_selling == true)
             setTopSelling(topSelling)
-            console.log("resp.data",resp.data)
-            alert("resp.data",resp.data)
         })
     },[])
-    //const topSelling = products.filter(product => product.topSelling == true) 
+
     return (
         <div className={classes["top-selling_container"]}>
         <div className={classes["top-selling"]}>

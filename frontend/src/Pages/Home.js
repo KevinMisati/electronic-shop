@@ -5,9 +5,7 @@ import TopSelling from '../components/Home/TopSelling'
 import axiosInstance from '../axiosApi'
 const Home = () => {
 
-
-
-    return (
+  return (
         <div className={classes["home_container"]}>
           
         <div>

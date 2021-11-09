@@ -19,7 +19,6 @@ const ProductInfo = () => {
         axiosInstance.get(`products/${id}`)
         .then(resp => {
             setProduct(resp.data)
-            console.log(resp.data)
         })
         .catch(error => {
             throw error
@@ -38,11 +37,6 @@ const ProductInfo = () => {
             <div className={classes["product-desc"]}>
                 <h2>{title}</h2>
                 <p>{info}</p>
-                {/* <div className={classes["change-amount"]}>
-                    <button className={classes["remove-btn"]}>-</button>
-                    <span className={classes["quantity"]}>2</span>
-                    <button className={classes["add-btn"]}>+</button>
-                </div> */}
                 <div className={classes["add-btn"]} onClick={() => handleItemIncrement(id)}>
                     <AddToCartButton text="add to cart" />
                 </div>

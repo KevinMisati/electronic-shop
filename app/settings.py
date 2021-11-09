@@ -175,10 +175,11 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 #django_heroku.settings(locals())
 
 
-DEBUG = False
+#DEBUG = False
+DEBUG = True
 
 if DEBUG == False:
-    """ BASE_URL = "https://electron-shop.herokuapp.com"
+    BASE_URL = "https://electron-shop.herokuapp.com"
     ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
                 "127.0.0.1", '0.0.0.0', 'localhost', ]
     
@@ -186,4 +187,4 @@ if DEBUG == False:
     conn_max_age=600, ssl_require=True) 
 
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True """
+    SECURE_SSL_REDIRECT = True 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const baseUrl ="https://electron-shop.herokuapp.com/api/"
-//const baseUrl = "http://127.0.0.1:8000/api/"
+//const baseUrl ="https://electron-shop.herokuapp.com/api/"
+const baseUrl = "http://127.0.0.1:8000/api/"
 const axiosInstance = axios.create({
     baseURL:baseUrl,
     timeout:50000,

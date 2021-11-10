@@ -1,0 +1,11 @@
+.logout-container{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    width: 100vw;
+    min-height: calc(100vh - 80px);
+    background:var(--gray-color);
+}
+.logout-container p{
+    text-align: center;
+}

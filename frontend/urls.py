@@ -11,6 +11,7 @@ urlpatterns = [
     path('store/', index_view),
     path('cart/', index_view),
     path('account/login', index_view),
+    path('account', index_view),
     path('account/signup', index_view),
     #url(r'^.*/$', index_view), # for all other urls
 ]

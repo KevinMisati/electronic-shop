@@ -13,7 +13,6 @@ const Store = () => {
         .then(response => {
             setProducts(response.data)
             setFilteredProducts(response.data.filter(product => product.category == "laptops"))
-            console.log(response.data)
         })
         
         .catch(error => {

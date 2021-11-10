@@ -2,8 +2,10 @@ import React,{useState} from 'react'
 import classes from "./Login.module.css"
 import {Link} from "react-router-dom"
 import axiosInstance from '../../axiosApi'
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+    let history = useHistory();
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const handleSubmit = (e) => {
@@ -17,7 +19,11 @@ const Login = () => {
             axiosInstance.defaults.headers['Authorization'] = 'JWT ' + response.data.acess
             localStorage.setItem('access_token',response.data.acess)
             localStorage.setItem('refresh_token',response.data.refresh)
-            console.log(response.data)
+            console.log(response)
+            if (response.status == 200){
+                history.push("/account")
+            }
+
             return response.data
         })
         .catch (error => {

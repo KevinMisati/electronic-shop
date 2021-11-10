@@ -1,8 +1,11 @@
 import React,{useState} from 'react'
 import classes from "./SignUp.module.css"
 import axiosInstance from "../../axiosApi"
+import { useHistory } from 'react-router-dom'
 
 const SignUp = () => {
+    const history = useHistory()
+
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const [firstname,setFirstName] = useState("")
@@ -15,9 +18,14 @@ const SignUp = () => {
             last_name:lastname,
             password:password
         })
-        .then(resp =>  resp)
+        .then(resp =>  {
+            //console.log(resp)
+            if (resp.status == 201 && resp.statusText == "Created"){
+                history.push("/")
+            }
+        })
         .catch(error => {
-            console.log(error)
+            throw error
         })
     }
     const handleEmailChange = (e) => {
@@ -25,7 +33,6 @@ const SignUp = () => {
     }
     const handlePasswordChange = (e) => {
         setPassword(e.target.value)
-        console.log("not working")
     }
     const handleFirstnameChange = (e) => {
         setFirstName(e.target.value)
@@ -44,11 +51,11 @@ const SignUp = () => {
                     </div>
                     <div className={classes["input-control"]}>
                         <label htmlFor='firstname'>first name</label>
-                        <input onChange={handleFirstnameChange} id='username' type='text' name='firstname' value={firstname} />
+                        <input onChange={handleFirstnameChange} id='firstname' type='text' name='firstname' value={firstname} />
                     </div>
                     <div className={classes["input-control"]}>
                         <label htmlFor='lastname'>last name</label>
-                        <input onChange={handleLastNameChange} id='username' type='text' name='lastname' value={lastname} />
+                        <input onChange={handleLastNameChange} id='lastname' type='text' name='lastname' value={lastname} />
                     </div>
                     <div className={classes["input-control"]}>
                         <label htmlFor='password'>passowd</label>

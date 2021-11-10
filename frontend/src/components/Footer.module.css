@@ -1,5 +1,5 @@
 .footer-container {
-    position: relative;
+    position: absolute;
     z-index: 99;
     color: #fff;
     background: #000;
@@ -8,6 +8,7 @@
     width: 100%;
     justify-content: center;
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    top:100%;
 }
 .footer{
     width: 100%;

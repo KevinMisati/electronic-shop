@@ -5,11 +5,12 @@
     --transition:.5s all;
     
 }
-
-.app{
-    /* display: flex;
-    align-items: center;
-    flex-direction: column; */
+.content{
+    align-items:stretch !important;
+    justify-content: stretch !important;
+    width:100vw;
+    height: 100vh;
+    background-color: var(--gray-color);
 }
 h1,
 h2,

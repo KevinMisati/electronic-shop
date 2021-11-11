@@ -17,9 +17,11 @@ const Login = () => {
         )
         .then(response => {
             axiosInstance.defaults.headers['Authorization'] = 'JWT ' + response.data.acess
-            localStorage.setItem('access_token',response.data.acess)
+            //localStorage.setItem('access_token',response.data.refresh)
             localStorage.setItem('refresh_token',response.data.refresh)
-            console.log(response)
+            localStorage.setItem('access_token',response.data.access)
+
+            console.log(response.data.refresh)
             if (response.status == 200){
                 history.push("/account")
             }

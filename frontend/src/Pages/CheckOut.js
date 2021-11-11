@@ -1,12 +1,57 @@
-import React from 'react'
+import React,{useState} from 'react'
 import classes from "./CheckOut.module.css"
 
 const CheckOut = () => {
+    const [isAddressDetailsOpen,setIsAddressDetailsOpen] = useState(false)
+    const [pickUpStations,setPickUpStations] = useState(false)
+    const handleToggleAddressDetails = (e) => {
+        setIsAddressDetailsOpen(true)
+        setPickUpStations(false)
+    }
+    const handlePickUpStation = (e) => {
+        setPickUpStations(true)
+        setIsAddressDetailsOpen(false)
+    }
     return (
         <div className={classes["checkout-container"]}>
          <div className={classes["checkout"]}>
+
             <form>
-                    <h2>1. ADDRESS DETAILS</h2>
+                    <h2>delivery method</h2>
+                    <h4>How do you want your order delivered?</h4>
+
+                    <div className={` ${classes["input-control"]} ${classes["input-control-delivery"]}`}>
+                        <div className={classes["pick-up"]}>
+                            <input onClick={handlePickUpStation}id="store_pickup" name="delivery_method" type="radio" />
+                            <span></span>
+                            <label htmlFor='store_pickup'>
+                                <i class="fas fa-store"></i>
+                                    Pick up
+                            </label>
+                        </div>
+                    <div className={classes["transport"]}>
+                            <input  onClick={handleToggleAddressDetails}  id="transport" name="delivery_method" type="radio" />
+                            <span></span>
+                            <label name="transport">
+                                <i class="fas fa-truck-moving"></i>
+                                
+                                    Ship
+                            </label>
+                    </div>
+                    </div>
+                    <div className={ !pickUpStations ? classes["pickup-stores-container"] : ""}>
+                        <h2>pickup stations</h2>
+                        <div className={classes["pickup-stores"]}>
+                            <div className={classes["input-control"]}>
+                                <input type='radio' name="lapshop_stores" />
+                                <label>Lapshop stores, Kakamega</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div className={ !isAddressDetailsOpen ? classes["address-details-container"] : ""}>
+                        <h2>address details</h2>
                 <div className={classes["names"]}>
                     <div className={classes["input-control"]}>
                         <label htmlFor="firstname">First Name *</label>
@@ -45,51 +90,29 @@ const CheckOut = () => {
                 <div className={classes["input-control"]}>
                     <button>save and continue</button>
                 </div>
+            </div>
+
+            <div>
+                <h2>Payment method</h2>
+                <h4>How do you want to pay for your order?</h4>
+
+                <div className={classes["input-control"]}>
                     
-            </form>
-
-
-            <form>
-                    <h2>2. DELIVERY METHOD</h2>
-                    <h4>How do you want your order delivered?</h4>
-
-                    <div className={classes["input-control"]}>
-                        <div className={classes["mpesa-logo"]}>
-                            <input type="radio" />
-                        </div>
-
-                        <div className={classes["instructions"]}>
-                            <h4>Pay Now</h4>
-                            <p>1. Your security is our #1 priority. You keep control of every transaction and are protected against fraud and theft.</p>
-                            <p>2. Faster refund process. The refund will happen almost instantly. No need to wait. Jumia's return/refund policy applies.</p>
-                        </div>
+                    <div className={classes["payment-instructions"]}>
+                        <h4>Pay Now</h4>
+                        <p>Pay now and receive the products later.</p>
+                        <h4>Pay Later</h4>
+                        <p>Pay after you receive the products</p>
                     </div>
-                    <div className={classes["input-control"]}>
-                        <button>save and continue</button>
-                    </div>
+                </div>
+                <div className={classes["input-control"]}>
+                    <button>save and continue</button>
+                </div>
+            </div>
 
             </form>
 
-                <form>
-                    <h2>2. Payment METHOD</h2>
-                    <h4>How do you want to pay for your order?</h4>
-
-                    <div className={classes["input-control"]}>
-                        <div className={classes["mpesa-logo"]}>
-                            <input type="radio" />
-                        </div>
-                        
-                        <div className={classes["instructions"]}>
-                            <h4>Pay Now</h4>
-                            <p>1. Your security is our #1 priority. You keep control of every transaction and are protected against fraud and theft.</p>
-                            <p>2. Faster refund process. The refund will happen almost instantly. No need to wait. Jumia's return/refund policy applies.</p>
-                        </div>
-                    </div>
-                    <div className={classes["input-control"]}>
-                        <button>save and continue</button>
-                    </div>
-                </form>
-         </div>
+        </div>
         </div>
     )
 }

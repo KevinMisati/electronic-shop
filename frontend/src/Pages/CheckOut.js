@@ -1,7 +1,9 @@
 import React,{useState} from 'react'
 import classes from "./CheckOut.module.css"
+import { useHistory } from 'react-router-dom'
 
 const CheckOut = () => {
+    const history = useHistory()
     const [isAddressDetailsOpen,setIsAddressDetailsOpen] = useState(false)
     const [pickUpStations,setPickUpStations] = useState(false)
     const handleToggleAddressDetails = (e) => {
@@ -11,6 +13,10 @@ const CheckOut = () => {
     const handlePickUpStation = (e) => {
         setPickUpStations(true)
         setIsAddressDetailsOpen(false)
+    }
+    const handleOrders = (e) => {
+        e.preventDefault()
+        history.push("/thankyou")
     }
     return (
         <div className={classes["checkout-container"]}>
@@ -25,7 +31,7 @@ const CheckOut = () => {
                             <input onClick={handlePickUpStation}id="store_pickup" name="delivery_method" type="radio" />
                             <span></span>
                             <label htmlFor='store_pickup'>
-                                <i class="fas fa-store"></i>
+                                <i className="fas fa-store"></i>
                                     Pick up
                             </label>
                         </div>
@@ -33,7 +39,7 @@ const CheckOut = () => {
                             <input  onClick={handleToggleAddressDetails}  id="transport" name="delivery_method" type="radio" />
                             <span></span>
                             <label name="transport">
-                                <i class="fas fa-truck-moving"></i>
+                                <i className="fas fa-truck-moving"></i>
                                 
                                     Ship
                             </label>
@@ -59,36 +65,32 @@ const CheckOut = () => {
                     </div>
 
                     <div className={classes["input-control"]}>
-                        <label htmlFor="firstname">Last Name *</label>
+                        <label htmlFor="lastname">Last Name *</label>
                         <input id="lastname" type="text" />
                     </div>
                 </div>
 
                 <div className={classes["input-control"]}>
-                    <label htmlFor="firstname">Mobile phone number *</label>
+                    <label htmlFor="phone">Mobile phone number *</label>
                     <div className={classes["mobile"]}>
                         <div className={classes["country-code"]}>+254</div>
-                        <input type="phone" />
+                        <input id="phone" type="phone" />
                     </div>
                 </div>
 
                 <div className={classes["input-control"]}>
-                    <label htmlFor="firstname">Delivery Address *</label>
-                   <textarea  ></textarea>
+                    <label htmlFor="address">Delivery Address *</label>
+                   <textarea id="address"  ></textarea>
                 </div>
 
                 <div className={classes["input-control"]}>
-                        <label htmlFor="firstname">State/Region *</label>
-                    <input type="option" />
+                        <label htmlFor="state">State/Region *</label>
+                    <input id="state" type="option" />
                 </div>
 
                 <div className={classes["input-control"]}>
-                        <label htmlFor="firstname">City *</label>
-                    <input type="text" />
-                </div>
-
-                <div className={classes["input-control"]}>
-                    <button>save and continue</button>
+                        <label htmlFor="city">City *</label>
+                    <input id="city" type="text" />
                 </div>
             </div>
 
@@ -106,7 +108,7 @@ const CheckOut = () => {
                     </div>
                 </div>
                 <div className={classes["input-control"]}>
-                    <button>save and continue</button>
+                    <button onClick={handleOrders}>place order</button>
                 </div>
             </div>
 

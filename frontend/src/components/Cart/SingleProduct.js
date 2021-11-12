@@ -1,17 +1,18 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import classes from "./SingleProduct.module.css"
 import { CartContext } from '../../Context'
 
 
 
-const SingleProduct = ({ id, img, title, price,info}) => {
+const SingleProduct = ({ id, img, title, price,info,quantity_of_specific_product_in_cart}) => {
 
     //let price = price.toFixed(3)
     const {
         increase_sub_total,
         decrease_sub_total,
         products_in_cart,
-        remove_product_from_cart
+        remove_product_from_cart,
+        
     } = useContext(CartContext)
 
     const [quantityOfSpecificItem, setQuantityOfSpecificItem] = useState(1)
@@ -22,7 +23,11 @@ const SingleProduct = ({ id, img, title, price,info}) => {
         increase_sub_total(price)
         setQuantityOfSpecificItem(prev => prev + 1)
         settotalPriceOfSpecificItem(prevPrice => prevPrice + Number(price))
+        
     }
+    
+
+
     const handleItemdecrement = (id,price) => {
         
         if (quantityOfSpecificItem > 1){
@@ -53,7 +58,8 @@ const SingleProduct = ({ id, img, title, price,info}) => {
 
                     <button onClick={() => handleItemdecrement(id,price)} className={classes["remove-btn"]}>-</button>
 
-    <span className={classes["quantity"]}>{quantityOfSpecificItem}</span>
+    <span className={classes["quantity"]}>{ quantityOfSpecificItem 
+    }</span>
 
                     <button onClick={handleItemIncrement} className={classes["add-btn"]}>+</button>
 

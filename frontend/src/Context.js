@@ -10,7 +10,6 @@ const CartProvider = ({children}) => {
         number_of_items:0,
         products_in_cart:[],
         sub_total:0,
-        quantity_of_specific_product_in_cart:0,
     })
 
     const add_to_cart = (id) => {
@@ -21,7 +20,8 @@ const CartProvider = ({children}) => {
                 .then(resp => {
                     setCartState({...cartState,
                     number_of_items:cartState.number_of_items + 1,
-                    products_in_cart:[resp.data,...cartState.products_in_cart],
+                    products_in_cart:[{...resp.data,            quantity_of_specific_product_in_cart:1
+                    },...cartState.products_in_cart],
                     sub_total:cartState.sub_total + Number(resp.data.new_price)
                 })
                 
@@ -90,9 +90,7 @@ const CartProvider = ({children}) => {
         })
         
     }
-    const quantity_of_specific_product_in_cart = (id) => {
-
-    }
+    
 
 
 
@@ -105,7 +103,9 @@ const CartProvider = ({children}) => {
                 sub_total:cartState.sub_total,
                 increase_sub_total:increase_sub_total,
                 decrease_sub_total:decrease_sub_total,
-                remove_product_from_cart:remove_product_from_cart
+                remove_product_from_cart:remove_product_from_cart,
+                
+
             }
         }
         >

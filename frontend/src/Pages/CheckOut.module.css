@@ -164,3 +164,15 @@ padding: 10px;
     margin-right: .5rem;
     align-items: center;
 }
+@media screen and (max-width:600px) {
+    .checkout{
+        padding: 0 .5rem;
+    }
+    .names{
+        flex-direction: column;
+    }
+    .checkout form {
+        width: 100%;
+        margin: 0;
+    }
+}

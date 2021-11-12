@@ -12,6 +12,7 @@ import {CartProvider} from "./Context"
 import checkout from "./Pages/CheckOut"
 import CheckOut from "./Pages/CheckOut";
 import ScrollToTop from "./components/ScrollToTop";
+import ThankYou from "./Pages/ThankYou";
 
 const App = () => {
   const {path,url} = useRouteMatch()
@@ -27,6 +28,7 @@ const App = () => {
           <Route exact path="/store" component={Store} />
           <Route exact path="/store/product/:id" component={ProductInfo} />
           <Route path="/checkout" component={CheckOut} ></Route>
+          <Route path="/thankyou" component={ThankYou} ></Route>
           <Route exact path="/" component={Home} />
         </Switch>
         

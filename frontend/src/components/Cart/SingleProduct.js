@@ -4,28 +4,42 @@ import { CartContext } from '../../Context'
 
 
 
-const SingleProduct = ({ id, img, title, price,info,quantity_of_specific_product_in_cart}) => {
+const SingleProduct = ({ id, img, title, price,info,quantity}) => {
 
-    //let price = price.toFixed(3)
+    //console.log("single",quantity)
     const {
         increase_sub_total,
         decrease_sub_total,
-        products_in_cart,
         remove_product_from_cart,
-        
+        increase_quantity
     } = useContext(CartContext)
 
-    const [quantityOfSpecificItem, setQuantityOfSpecificItem] = useState(1)
-    const [totalPriceOfSpecificItem, settotalPriceOfSpecificItem] = useState(Number(price))
+    
+    let localCartState = localStorage.getItem('cartState')
+    localCartState = JSON.parse(localCartState)
+    let product = localCartState.products_in_cart.filter(prod => prod.id == id)
+    product = product[0]
+    const defaultQuantity = product.quantity
+    const defaultPrice = product.quantity * price
+
+    const [quantityOfSpecificItem, setQuantityOfSpecificItem] = useState(defaultQuantity)
+    const [totalPriceOfSpecificItem, settotalPriceOfSpecificItem] = useState(Number(defaultPrice))
+    
 
     const handleItemIncrement = () => {
+
         
+        settotalPriceOfSpecificItem(prevPrice => prevPrice + Number(price))
         increase_sub_total(price)
         setQuantityOfSpecificItem(prev => prev + 1)
-        settotalPriceOfSpecificItem(prevPrice => prevPrice + Number(price))
-        
+        increase_quantity(quantityOfSpecificItem,id)
     }
-    
+    useEffect(() => {
+        increase_quantity(quantityOfSpecificItem,id)
+    },[quantityOfSpecificItem])
+    useEffect(() => {
+        
+    })
 
 
     const handleItemdecrement = (id,price) => {
@@ -39,9 +53,8 @@ const SingleProduct = ({ id, img, title, price,info,quantity_of_specific_product
             remove_product_from_cart(id,price)
         }
     }
-    const handleProductRemoval = (id,price) => {
-        remove_product_from_cart(id,price)
-        console.log(products_in_cart)
+    const handleProductRemoval = (id,price,quantity) => {
+        remove_product_from_cart(id,price,quantity)
     }
     return (
         <div className={classes["single-product-container"]}>
@@ -58,8 +71,7 @@ const SingleProduct = ({ id, img, title, price,info,quantity_of_specific_product
 
                     <button onClick={() => handleItemdecrement(id,price)} className={classes["remove-btn"]}>-</button>
 
-    <span className={classes["quantity"]}>{ quantityOfSpecificItem 
-    }</span>
+            <span className={classes["quantity"]}>{quantityOfSpecificItem }</span>
 
                     <button onClick={handleItemIncrement} className={classes["add-btn"]}>+</button>
 
@@ -68,7 +80,7 @@ const SingleProduct = ({ id, img, title, price,info,quantity_of_specific_product
                     {totalPriceOfSpecificItem.toFixed(2)}
                 </div>
                 <div className={classes["remove-product"]}>
-                    <button onClick={() => handleProductRemoval(id,price)}>Remove</button>
+                    <button onClick={() => handleProductRemoval(id,price,quantityOfSpecificItem)}>Remove</button>
                 </div>
                 </div>
             </div>

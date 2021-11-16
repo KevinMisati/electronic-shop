@@ -30,7 +30,7 @@ const Cart = () => {
                 <div>
                 <div className={classes["products"]}>
                 {
-                    products_in_cart.map (({id,img,title,new_price,info}) => {
+                    products_in_cart.map (({id,img,title,new_price,quantity}) => {
                         return (
                             <SingleProduct
                                     key={id}
@@ -38,6 +38,7 @@ const Cart = () => {
                                     title={title}
                                     price={new_price}
                                     id={id}
+                                    quantity={quantity}
                             />
                         )
                     })

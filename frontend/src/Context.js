@@ -6,11 +6,20 @@ const CartContext = createContext()
 
 const CartProvider = ({children}) => {
 
-    const [cartState,setCartState] = useState({
+    const localCartState =  localStorage.getItem('cartState')
+    //const localCartState = JSON.parse(localCartStateString)
+    
+    const defaultCartState = {
         number_of_items:0,
         products_in_cart:[],
         sub_total:0,
-    })
+    }
+
+    const [cartState,setCartState] = useState(JSON.parse(localCartState) ? JSON.parse(localCartState) : defaultCartState)
+
+    useEffect(()=> {
+        localStorage.setItem('cartState',JSON.stringify(cartState))
+    },[cartState])
 
     const add_to_cart = (id) => {
 
@@ -20,7 +29,7 @@ const CartProvider = ({children}) => {
                 .then(resp => {
                     setCartState({...cartState,
                     number_of_items:cartState.number_of_items + 1,
-                    products_in_cart:[{...resp.data,            quantity_of_specific_product_in_cart:1
+                    products_in_cart:[{...resp.data,quantity:1
                     },...cartState.products_in_cart],
                     sub_total:cartState.sub_total + Number(resp.data.new_price)
                 })
@@ -42,7 +51,7 @@ const CartProvider = ({children}) => {
                 .then(resp => {
                     setCartState({...cartState,
                     number_of_items:cartState.number_of_items + 1,
-                    products_in_cart:[resp.data,...cartState.products_in_cart],
+                    products_in_cart:[{...resp.data,quantity:1},...cartState.products_in_cart],
                     sub_total:cartState.sub_total + Number(resp.data.new_price)
                 })
                 
@@ -51,20 +60,25 @@ const CartProvider = ({children}) => {
                     throw error
                 })
             }
-
-        
     
                 }
-            
-        
-        
-        
-        
-       
 
     } 
+    const increase_quantity = (quantity,id) => {
+        //console.log("inc func",quantity)
+        let products = cartState.products_in_cart 
+        let product = products.filter(prod => prod.id == id)
+        const index = products.findIndex(prod => prod.id == id)
+        product = {
+            ...products[index],
+            quantity:quantity
+        }
 
-    const increase_sub_total = (price) => {
+        products[index] = product
+}
+
+
+    const increase_sub_total = (price,id) => {
         setCartState({
             ...cartState,
             sub_total:cartState.sub_total + Number(price)
@@ -80,16 +94,17 @@ const CartProvider = ({children}) => {
         
     }
 
-    const remove_product_from_cart = (id,price) => {
-        
+    const remove_product_from_cart = (id,price,quantity) => {
+        console.log(price * quantity)
         setCartState({
             ...cartState,
             products_in_cart:cartState.products_in_cart.filter(product => product.id != id),
-            sub_total:cartState.sub_total - Number(price),
+            sub_total:cartState.sub_total - (price * quantity),
             number_of_items:cartState.number_of_items - 1
         })
         
     }
+    
     
 
 
@@ -104,8 +119,7 @@ const CartProvider = ({children}) => {
                 increase_sub_total:increase_sub_total,
                 decrease_sub_total:decrease_sub_total,
                 remove_product_from_cart:remove_product_from_cart,
-                
-
+                increase_quantity:increase_quantity
             }
         }
         >

@@ -4,7 +4,7 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    background: url("https://images.pexels.com/photos/4439466/pexels-photo-4439466.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260") center/cover no-repeat fixed;
+    /* background: url("https://images.pexels.com/photos/4439466/pexels-photo-4439466.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260") center/cover no-repeat fixed; */
 }
 .thankyou{
     max-width: 700px;

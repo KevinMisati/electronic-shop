@@ -60,3 +60,6 @@
 .create-account-link a:hover{
     color: var(--blue-color);
 }
+.err-message{
+    color: red;
+}

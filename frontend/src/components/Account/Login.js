@@ -36,7 +36,7 @@ const Login = () => {
             if (response.status == 200){
                 history.push("/account")
             }
-
+            alert("You have logged in.")
             return response.data
         })
         .catch (error => {

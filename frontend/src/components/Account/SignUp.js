@@ -5,14 +5,16 @@ import { useHistory } from 'react-router-dom'
 
 const SignUp = () => {
     const history = useHistory()
-
+    const [errMessage,setErrMessage] = useState("")
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const [firstname,setFirstName] = useState("")
     const [lastname,setLastName] = useState("")
+    
     const handleSubmit = (e) => {
         e.preventDefault()
-        axiosInstance.post('user/create/',{
+        if (email !== "" && password !== "" && firstname !=="" && lastname !== "" && email.includes("@")){
+            axiosInstance.post('user/create/',{
             email:email,
             first_name:firstname,
             last_name:lastname,
@@ -21,12 +23,18 @@ const SignUp = () => {
         .then(resp =>  {
             //console.log(resp)
             if (resp.status == 201 && resp.statusText == "Created"){
+                alert("You have successfully created an account.")
                 history.push("/")
             }
         })
         .catch(error => {
             throw error
         })
+        }
+        else{
+            setErrMessage("Please fill in the form correctly, all fields are required.")
+        }
+        
     }
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
@@ -45,6 +53,9 @@ const SignUp = () => {
             <div className={classes["signup"]}>
                 <h1>Create Account</h1>
                 <form>
+                    {
+                        <p className={classes["err-message"]}>{errMessage}</p>
+                    }
                     <div className={classes["input-control"]}>
                         <label htmlFor='email'>email</label>
                         <input onChange={handleEmailChange} id='email' type='email' name='email' value={email} />

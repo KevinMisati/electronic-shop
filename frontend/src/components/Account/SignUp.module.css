@@ -47,3 +47,7 @@
     text-transform: capitalize;
     font-size: 1.1rem;
 }
+.err-message{
+    color: red;
+    max-width: 500px;
+}

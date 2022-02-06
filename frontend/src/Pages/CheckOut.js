@@ -1,8 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import classes from "./CheckOut.module.css"
 import { useHistory } from 'react-router-dom'
+import { CartContext } from '../Context'
 
 const CheckOut = () => {
+    const {resetCart} = useContext(CartContext)
     const history = useHistory()
     const [isAddressDetailsOpen,setIsAddressDetailsOpen] = useState(false)
     const [pickUpStations,setPickUpStations] = useState(false)
@@ -16,6 +18,7 @@ const CheckOut = () => {
     }
     const handleOrders = (e) => {
         e.preventDefault()
+        resetCart()
         history.push("/thankyou")
     }
     return (

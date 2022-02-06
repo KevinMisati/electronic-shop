@@ -104,6 +104,14 @@ const CartProvider = ({children}) => {
         })
         
     }
+    const resetCart =() => {
+        console.log("I think am working")
+    setCartState( {
+        number_of_items:0,
+        products_in_cart:[],
+        sub_total:0,
+    })
+    }
     
     
 
@@ -119,7 +127,8 @@ const CartProvider = ({children}) => {
                 increase_sub_total:increase_sub_total,
                 decrease_sub_total:decrease_sub_total,
                 remove_product_from_cart:remove_product_from_cart,
-                increase_quantity:increase_quantity
+                increase_quantity:increase_quantity,
+                resetCart:resetCart
             }
         }
         >

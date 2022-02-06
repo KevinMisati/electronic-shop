@@ -65,7 +65,6 @@ const CartProvider = ({children}) => {
 
     } 
     const increase_quantity = (quantity,id) => {
-        //console.log("inc func",quantity)
         let products = cartState.products_in_cart 
         let product = products.filter(prod => prod.id == id)
         const index = products.findIndex(prod => prod.id == id)
@@ -105,7 +104,6 @@ const CartProvider = ({children}) => {
         
     }
     const resetCart =() => {
-        console.log("I think am working")
     setCartState( {
         number_of_items:0,
         products_in_cart:[],

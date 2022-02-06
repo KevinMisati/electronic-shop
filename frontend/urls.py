@@ -1,5 +1,6 @@
 #from django.conf.urls import url
 from django.urls.conf import path
+from django.urls import re_path
 from .views import index_view
 
 
@@ -12,5 +13,5 @@ urlpatterns = [
     path('account', index_view),
     path('thankyou', index_view),
     path('account/signup', index_view),
-    #url(r'^.*/$', index_view), # for all other urls
+    re_path(r'^.*/$', index_view), # for all other urls
 ]

@@ -13,6 +13,7 @@ import checkout from "./Pages/CheckOut"
 import CheckOut from "./Pages/CheckOut";
 import ScrollToTop from "./components/ScrollToTop";
 import ThankYou from "./Pages/ThankYou";
+import Error404 from "./Pages/Error404"
 
 const App = () => {
   const {path,url} = useRouteMatch()
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="/checkout" component={CheckOut} ></Route>
           <Route path="/thankyou" component={ThankYou} ></Route>
           <Route exact path="/" component={Home} />
+          <Route component={Error404} />
         </Switch>
         
         <Footer />

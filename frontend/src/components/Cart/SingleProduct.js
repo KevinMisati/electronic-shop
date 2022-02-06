@@ -42,15 +42,14 @@ const SingleProduct = ({ id, img, title, price,info,quantity}) => {
     })
 
 
-    const handleItemdecrement = (id,price) => {
-        
+    const handleItemdecrement = (id,price,quantity) => {
         if (quantityOfSpecificItem > 1){
             decrease_sub_total(price)
             settotalPriceOfSpecificItem(prevPrice => prevPrice - Number(price))
             setQuantityOfSpecificItem(prev => prev - 1)
         }
-        else if (quantityOfSpecificItem == 1){
-            remove_product_from_cart(id,price)
+        else if (quantityOfSpecificItem === 1){
+            remove_product_from_cart(id,price,1)
         }
     }
     const handleProductRemoval = (id,price,quantity) => {

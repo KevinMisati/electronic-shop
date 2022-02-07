@@ -176,6 +176,7 @@ AUTH_USER_MODEL = "authentication.CustomUser"
 
 DEBUG = True
 BASE_URL = "https://electron-shop.herokuapp.com"
+
 ALLOWED_HOSTS = ["electron-shop.herokuapp.com",
                 "127.0.0.1", '0.0.0.0', 'localhost', ] 
 

@@ -117,8 +117,6 @@ transition: .5s all;
     .img-container_outer{
     width:225px !important;
     height: 310px !important;
-    background-color: #ADACAC;
-    background-color: #dfdddd;
     vertical-align: middle;
     display: flex;
     align-items: center;

@@ -38,7 +38,10 @@ const ProductInfo = () => {
                 <h2>{title}</h2>
                 <p>{info}</p>
                 <div className={classes["add-btn"]} onClick={() => handleItemIncrement(id)}>
-                    <AddToCartButton text="add to cart" />
+                    <AddToCartButton
+                        color="#555"
+                        font="1.05rem"
+                        text="add to cart" />
                 </div>
                 
             </div>

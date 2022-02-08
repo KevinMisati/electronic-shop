@@ -45,6 +45,7 @@
     line-height: 1.5;
     color:#555;
     font-size: 1.1rem;
+    text-align: center;
 }
 
 .change-amount{
@@ -129,4 +130,21 @@
         height: auto;
     }
     
+}
+@media screen and (max-width:576px){
+    .img-container{
+        width: auto !important;
+        background: #fff;
+        width: 300px !important;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+
+    }
 }
